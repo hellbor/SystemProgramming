@@ -127,7 +127,7 @@ public:
 		MAX_SPEED
 		(
 			max_speed < MAX_SPEED_LOWER_LIMIT ? MAX_SPEED_LOWER_LIMIT :
-			max_speed>MAX_SPEED_HIGHER_LIMIT ? MAX_SPEED_HIGHER_LIMIT :
+			max_speed > MAX_SPEED_HIGHER_LIMIT ? MAX_SPEED_HIGHER_LIMIT :
 			max_speed
 		),
 		engine(consumption),
@@ -186,6 +186,7 @@ public:
 
 //#define TANK_CHECK
 //#define ENGINE_CHECK
+#define CAR_CHECK
 
 void main()
 {
@@ -207,7 +208,9 @@ void main()
 	engine.info();
 #endif // ENGINE_CHECK
 
+#ifdef CAR_CHECK
 	Car bmw(10, 80, 270);
-	//bmw.info();
+	bmw.info();
 	bmw.control();
+#endif // CAR_CHECK
 }
