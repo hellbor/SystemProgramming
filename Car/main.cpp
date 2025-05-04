@@ -73,6 +73,7 @@ class Engine
 	const double CONSUMPTION;	// Расход на 100км
 	const double DEFAULT_CONSUMPTION_PER_SECOND;
 	double consumption_per_second;
+	//double consumption; // Расход 10 литров на 100 км
 	bool is_started;
 public:
 	double get_consumption_per_second()const
@@ -107,6 +108,16 @@ public:
 	bool started()const
 	{
 		return is_started;
+	}
+	void speed_up(int speed)
+	{
+		if (speed > 0)consumption_per_second = 0.0020;
+		else if (speed > 60)consumption_per_second = 0.0014;
+		else if (speed > 100)consumption_per_second = 0.0020;
+		else if (speed > 140)consumption_per_second = 0.0025;
+		else if (speed > 200)consumption_per_second = 0.0030;
+		consumption_per_second = CONSUMPTION * 3e-5;
+		if (speed <= 0)consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND;
 	}
 	void info()const
 	{
